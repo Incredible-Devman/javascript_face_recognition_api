@@ -61,7 +61,7 @@
 Clone the repository:
 
 ``` bash
-git clone https://github.com/justadudewhohacks/face-api.js.git
+git clone https://github.com/devman-AI/face_recog_api.git
 ```
 
 ## Running the Browser Examples
@@ -98,7 +98,7 @@ node faceDetection.js
 
 # face-api.js for the Browser
 
-Simply include the latest script from [dist/face-api.js](https://github.com/justadudewhohacks/face-api.js/tree/master/dist).
+Simply include the latest script from [dist/face-api.js](https://github.com/face_recog_api/tree/main/dist).
 
 Or install it via npm:
 
@@ -484,8 +484,6 @@ const minProbability = 0.05
 faceapi.draw.drawFaceExpressions(canvas, resizedResults, minProbability)
 ```
 
-You can also draw boxes with custom text ([DrawBox](https://github.com/justadudewhohacks/tfjs-image-recognition-base/blob/master/src/draw/DrawBox.ts)):
-
 ``` javascript
 const box = { x: 50, y: 50, width: 100, height: 100 }
 // see DrawBoxOptions below
@@ -507,8 +505,6 @@ export interface IDrawBoxOptions {
   label?: string
 }
 ```
-
-Finally you can draw custom text fields ([DrawTextField](https://github.com/justadudewhohacks/tfjs-image-recognition-base/blob/master/src/draw/DrawTextField.ts)):
 
 ``` javascript
 const text = [
@@ -789,7 +785,6 @@ const canvas2 = faceapi.createCanvasFromMedia(document.getElementById('myVideo')
 
 For face detection, this project implements a SSD (Single Shot Multibox Detector) based on MobileNetV1. The neural net will compute the locations of each face in an image and will return the bounding boxes together with it's probability for each face. This face detector is aiming towards obtaining high accuracy in detecting face bounding boxes instead of low inference time. The size of the quantized model is about 5.4 MB (**ssd_mobilenetv1_model**).
 
-The face detection model has been trained on the [WIDERFACE dataset](http://mmlab.ie.cuhk.edu.hk/projects/WIDERFace/) and the weights are provided by [yeephycho](https://github.com/yeephycho) in [this](https://github.com/yeephycho/tensorflow-face-detection) repo.
 
 ### Tiny Face Detector
 
@@ -810,8 +805,6 @@ This package implements a very lightweight and fast, yet accurate 68 point face 
 ## Face Recognition Model
 
 For face recognition, a ResNet-34 like architecture is implemented to compute a face descriptor (a feature vector with 128 values) from any given face image, which is used to describe the characteristics of a persons face. The model is **not** limited to the set of faces used for training, meaning you can use it for face recognition of any person, for example yourself. You can determine the similarity of two arbitrary faces by comparing their face descriptors, for example by computing the euclidean distance or using any other classifier of your choice.
-
-The neural net is equivalent to the **FaceRecognizerNet** used in [face-recognition.js](https://github.com/justadudewhohacks/face-recognition.js) and the net used in the [dlib](https://github.com/davisking/dlib/blob/master/examples/dnn_face_recognition_ex.cpp) face recognition example. The weights have been trained by [davisking](https://github.com/davisking) and the model achieves a prediction accuracy of 99.38% on the LFW (Labeled Faces in the Wild) benchmark for face recognition.
 
 The size of the quantized model is roughly 6.2 MB (**face_recognition_model**).
 
